@@ -23,9 +23,6 @@ class GameViewController: UIViewController {
 
         // allows the user to manipulate the camera
         scnView.allowsCameraControl = true
-
-        let light = scene.rootNode.childNode(withName: "omni", recursively: true)!
-        scnView.pointOfView = light
         #if DEBUG
         // show statistics such as fps and timing information
         scnView.showsStatistics = true
