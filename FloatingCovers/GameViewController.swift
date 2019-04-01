@@ -18,6 +18,10 @@ class GameViewController: UIViewController {
         let scnView = self.view as! SCNView
         scnView.autoenablesDefaultLighting = false
 
+
+        let camera = scene.rootNode.childNode(withName: "camera", recursively: true)!
+        scnView.pointOfView = camera
+
         // set the scene to the view
         scnView.scene = scene
 

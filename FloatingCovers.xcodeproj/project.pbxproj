@@ -13,6 +13,9 @@
 		E6D69F9A2250E7D300BFB157 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D69F982250E7D300BFB157 /* Main.storyboard */; };
 		E6D69F9C2250E7D500BFB157 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6D69F9B2250E7D500BFB157 /* Assets.xcassets */; };
 		E6D69F9F2250E7D500BFB157 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D69F9D2250E7D500BFB157 /* LaunchScreen.storyboard */; };
+		E6EF2C2322514C0B0059DA76 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = E6D69F942250E7D300BFB157 /* art.scnassets */; };
+		E6EF2C25225252B50059DA76 /* BrightSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF2C24225252B50059DA76 /* BrightSaverView.swift */; };
+		E6EF2C2722525B7E0059DA76 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF2C2622525B7E0059DA76 /* ImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,10 +27,23 @@
 		E6D69F9B2250E7D500BFB157 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6D69F9E2250E7D500BFB157 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6D69FA02250E7D500BFB157 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6EF2C1922514BFE0059DA76 /* BrightsSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrightsSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6EF2C1B22514BFE0059DA76 /* BrightsSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrightsSaverView.h; sourceTree = "<group>"; };
+		E6EF2C1D22514BFE0059DA76 /* BrightsSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrightsSaverView.m; sourceTree = "<group>"; };
+		E6EF2C1F22514BFE0059DA76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6EF2C24225252B50059DA76 /* BrightSaverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightSaverView.swift; sourceTree = "<group>"; };
+		E6EF2C2622525B7E0059DA76 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E6D69F8C2250E7D300BFB157 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6EF2C1622514BFE0059DA76 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				E6D69F912250E7D300BFB157 /* FloatingCovers */,
+				E6EF2C1A22514BFE0059DA76 /* BrightsSaver */,
 				E6D69F902250E7D300BFB157 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				E6D69F8F2250E7D300BFB157 /* FloatingCovers.app */,
+				E6EF2C1922514BFE0059DA76 /* BrightsSaver.saver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,7 +85,29 @@
 			path = FloatingCovers;
 			sourceTree = "<group>";
 		};
+		E6EF2C1A22514BFE0059DA76 /* BrightsSaver */ = {
+			isa = PBXGroup;
+			children = (
+				E6EF2C1B22514BFE0059DA76 /* BrightsSaverView.h */,
+				E6EF2C1D22514BFE0059DA76 /* BrightsSaverView.m */,
+				E6EF2C1F22514BFE0059DA76 /* Info.plist */,
+				E6EF2C24225252B50059DA76 /* BrightSaverView.swift */,
+				E6EF2C2622525B7E0059DA76 /* ImageService.swift */,
+			);
+			path = BrightsSaver;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E6EF2C1422514BFE0059DA76 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		E6D69F8E2250E7D300BFB157 /* FloatingCovers */ = {
@@ -87,6 +127,24 @@
 			productReference = E6D69F8F2250E7D300BFB157 /* FloatingCovers.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E6EF2C1822514BFE0059DA76 /* BrightsSaver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6EF2C2222514BFE0059DA76 /* Build configuration list for PBXNativeTarget "BrightsSaver" */;
+			buildPhases = (
+				E6EF2C1422514BFE0059DA76 /* Headers */,
+				E6EF2C1522514BFE0059DA76 /* Sources */,
+				E6EF2C1622514BFE0059DA76 /* Frameworks */,
+				E6EF2C1722514BFE0059DA76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrightsSaver;
+			productName = BrightsSaver;
+			productReference = E6EF2C1922514BFE0059DA76 /* BrightsSaver.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +157,10 @@
 				TargetAttributes = {
 					E6D69F8E2250E7D300BFB157 = {
 						CreatedOnToolsVersion = 10.2;
+					};
+					E6EF2C1822514BFE0059DA76 = {
+						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -116,6 +178,7 @@
 			projectRoot = "";
 			targets = (
 				E6D69F8E2250E7D300BFB157 /* FloatingCovers */,
+				E6EF2C1822514BFE0059DA76 /* BrightsSaver */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +195,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E6EF2C1722514BFE0059DA76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6EF2C2322514C0B0059DA76 /* art.scnassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -141,6 +212,15 @@
 			files = (
 				E6D69F972250E7D300BFB157 /* GameViewController.swift in Sources */,
 				E6D69F932250E7D300BFB157 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6EF2C1522514BFE0059DA76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6EF2C25225252B50059DA76 /* BrightSaverView.swift in Sources */,
+				E6EF2C2722525B7E0059DA76 /* ImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +398,55 @@
 			};
 			name = Release;
 		};
+		E6EF2C2022514BFE0059DA76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BrightsSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.BrightsSaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		E6EF2C2122514BFE0059DA76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BrightsSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.BrightsSaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -335,6 +464,15 @@
 			buildConfigurations = (
 				E6D69FA42250E7D500BFB157 /* Debug */,
 				E6D69FA52250E7D500BFB157 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6EF2C2222514BFE0059DA76 /* Build configuration list for PBXNativeTarget "BrightsSaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6EF2C2022514BFE0059DA76 /* Debug */,
+				E6EF2C2122514BFE0059DA76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
