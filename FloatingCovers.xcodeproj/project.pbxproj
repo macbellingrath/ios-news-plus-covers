@@ -19,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E65A00E6225F483A00ED5FE7 /* SceneKitMacOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SceneKitMacOS.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		E6D69F8F2250E7D300BFB157 /* FloatingCovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FloatingCovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D69F922250E7D300BFB157 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6D69F942250E7D300BFB157 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		E6D69F912250E7D300BFB157 /* FloatingCovers */ = {
 			isa = PBXGroup;
 			children = (
+				E65A00E6225F483A00ED5FE7 /* SceneKitMacOS.playground */,
 				E6D69F922250E7D300BFB157 /* AppDelegate.swift */,
 				E6D69F962250E7D300BFB157 /* GameViewController.swift */,
 				E6D69F942250E7D300BFB157 /* art.scnassets */,

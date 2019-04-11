@@ -55,9 +55,14 @@ public class BrightsSaverView: ScreenSaverView {
         NSBezierPath.fill(rect)
     }
 
-    public override func animateOneFrame() {
-        super.animateOneFrame()
+//    public override func animateOneFrame() {
+//        super.animateOneFrame()
+//
+//        scnView.pointOfView?.position.z -= 0.001
+//    }
+}
 
-        scnView.pointOfView?.position.z -= 0.001
-    }
+
+class Scene: SCNScene {
+    
 }
