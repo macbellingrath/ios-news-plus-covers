@@ -69,7 +69,6 @@ class Scene: SCNScene {
         floor.firstMaterial?.diffuse.contents = NSColor.white
         floor.firstMaterial?.isDoubleSided = false
         let floorNode = SCNNode(geometry: floor)
-        floorNode.position = SCNVector3(x: 0, y: -0.2, z: 0)
         rootNode.addChildNode(floorNode)
 
         lightNode.constraints = [SCNLookAtConstraint(target: floorNode)]
@@ -95,11 +94,13 @@ class Scene: SCNScene {
             }
 
             var position = self.rootNode.position
+            // slightly above floor for shadow
+            position.y = 0.2
             let margin = CGFloat(1)
             let width = CGFloat(1)
             let height = CGFloat(0.15)
             let length = CGFloat(1)
-            let chamferRadiuss = CGFloat(0.3)
+            let chamferRadius = CGFloat(0.3)
 
             for row in matrix {
                 for column in row {
@@ -107,7 +108,7 @@ class Scene: SCNScene {
                         width: width,
                         height: height,
                         length: length,
-                        chamferRadius: chamferRadiuss
+                        chamferRadius: chamferRadius
                     )
                     newBoxGeometry.firstMaterial?.diffuse.contents = NSImage(contentsOf: column.image)
                     let newBoxNode = SCNNode(geometry: newBoxGeometry)
