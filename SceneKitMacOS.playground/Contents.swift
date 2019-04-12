@@ -1,8 +1,7 @@
-//: A SpriteKit based Playground
-
 import PlaygroundSupport
-PlaygroundPage.current.needsIndefiniteExecution = true
 import SceneKit
+
+PlaygroundPage.current.needsIndefiniteExecution = true
 
 struct BrightImage: Codable {
     let image: URL
@@ -13,7 +12,6 @@ struct BrightImage: Codable {
 struct Brights: Codable {
     let brights: [BrightImage]
 }
-
 
 class BrightService {
     let brightsURL = URL(string: "https://api.washingtonpost.com/rainbow-tv/brights/?width=200")!
@@ -44,7 +42,6 @@ class Scene: SCNScene {
         cameraNode.eulerAngles = SCNVector3(x: -1.2,
                                             y: 0.8,
                                             z: -0.072)
-        // cameraNode.constraints = [SCNLookAtConstraint(target: boxNode)]
         rootNode.addChildNode(cameraNode)
         self.cameraNode = cameraNode
 
@@ -62,9 +59,6 @@ class Scene: SCNScene {
 
 
         let lightNode = SCNNode()
-        // let lookAtBox = SCNLookAtConstraint(target: boxNode)
-        // lightNode.constraints = [lookAtBox]
-
         lightNode.position = SCNVector3(x: 0, y: 100, z: 0)
         lightNode.eulerAngles = SCNVector3(x: 0, y: CGFloat.pi/2, z: 0)
         lightNode.light = light
@@ -81,8 +75,7 @@ class Scene: SCNScene {
         lightNode.constraints = [SCNLookAtConstraint(target: floorNode)]
 
         service.getBrights { resp in
-            // 6 rows of
-            // build a matrix
+            // 6 rows of <= 5
             var matrix: [[BrightImage]] = []
             var i = 0
             var j = 0
@@ -107,6 +100,7 @@ class Scene: SCNScene {
             let height = CGFloat(0.15)
             let length = CGFloat(1)
             let chamferRadiuss = CGFloat(0.3)
+
             for row in matrix {
                 for column in row {
                     let newBoxGeometry = SCNBox(
@@ -154,24 +148,12 @@ class View: SCNView, SCNSceneRendererDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         print("euler - \(pointOfView?.eulerAngles) position: \(pointOfView?.position)")
     }
-
-    /// Convert Radians To Degrees
-    ///
-    /// - Parameter radian: Float
-    /// - Returns: Float
-    func degreesFrom( _ radian: CGFloat) -> CGFloat {
-        return radian * CGFloat(180.0 / Double.pi)
-
-    }
-
 }
 
-// Load the SKScene from 'GameScene.sks'
 let sceneView = View(frame: CGRect(x:0 , y:0, width: 800, height: 450))
 sceneView.loadScene()
 sceneView.allowsCameraControl = true
 sceneView.delegate = sceneView
-
 
 PlaygroundSupport.PlaygroundPage.current.liveView = sceneView
 
