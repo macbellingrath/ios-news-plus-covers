@@ -1,32 +1,13 @@
-import PlaygroundSupport
-import SceneKit
+//
+//  BrightScene.swift
+//  FloatingCovers
+//
+//  Created by Mac Bellingrath on 4/13/19.
+//  Copyright © 2019 Mac Bellingrath. All rights reserved.
+//
 
-PlaygroundPage.current.needsIndefiniteExecution = true
-
-#if TARGET_OS_IPHONE
-import UIKit
-#else
-import AppKit
-#endif
 import Foundation
-
-#if TARGET_OS_IPHONE
-typealias Image = UIImage
-#else
-typealias Image = NSImage
-#endif
-
-class ImageService: NSObject {
-    func getImage(url: URL, completion: @escaping (Result<Image, Error>) -> Void) {
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, resp, error) in
-            if let error = error {
-                completion(.failure(error))
-            } else if let data = data, let image = Image(data: data) {
-                completion(.success(image))
-            }
-        }).resume()
-    }
-}
+import SceneKit
 
 
 struct BrightImage: Codable {
@@ -54,8 +35,9 @@ class BrightService {
 }
 
 class Scene: SCNScene {
-    var imageService = ImageService()
+
     var service = BrightService()
+    var imageService = ImageService()
     var cameraNode: SCNNode?
 
     func render(completion: @escaping () -> Void) {
@@ -83,12 +65,12 @@ class Scene: SCNScene {
         // Higher numbers result in smoother edges; lower numbers increase rendering performance.
         light.shadowSampleCount = 10
 
+
         let lightNode = SCNNode()
-        lightNode.position = SCNVector3(x: 0, y: 2, z: 0)
-        lightNode.eulerAngles = SCNVector3(x: 0, y: (CGFloat.pi/2), z: 0)
+        lightNode.position = SCNVector3(x: 0, y: 100, z: 0)
+        lightNode.eulerAngles = SCNVector3(x: 0, y: CGFloat.pi/2, z: 0)
         lightNode.light = light
         rootNode.addChildNode(lightNode)
-
 
         let floor = SCNFloor()
         floor.reflectivity = 0
@@ -142,14 +124,12 @@ class Scene: SCNScene {
                     newBoxNode.position = position
                     position.x += newBoxGeometry.width + margin
 
-                    self.imageService.getImage(url: column.image, completion: { result in
+                    self.imageService.getImage(url: column.image) { [weak self] result in
                         newBoxGeometry.firstMaterial?.diffuse.contents = try? result.get()
-                        self.rootNode.addChildNode(newBoxNode)
-                        
-                    })
+                        self?.rootNode.addChildNode(newBoxNode)
+                    }
+
                 }
-
-
                 position.x = 0
                 position.z += length + margin
             }
@@ -170,7 +150,7 @@ class View: SCNView, SCNSceneRendererDelegate {
         loops = true
 
         scene.render {
-            let duration: TimeInterval = 2
+            let duration: TimeInterval = 10
             let moveDownAction = SCNAction.move(by: SCNVector3(x: 0, y: -5, z: -5), duration: duration)
             let rotateAction = SCNAction.rotateBy(x: -0.3, y: -0.2, z: 0, duration: duration)
             let pan = SCNAction.move(by:  SCNVector3(x: 0, y: 0, z: 5), duration: duration)
@@ -180,13 +160,6 @@ class View: SCNView, SCNSceneRendererDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        print("euler - \(pointOfView?.eulerAngles) position: \(pointOfView?.position)")
     }
 }
-
-let sceneView = View(frame: CGRect(x:0 , y:0, width: 1000, height: 1000))
-sceneView.loadScene()
-sceneView.allowsCameraControl = true
-sceneView.delegate = sceneView
-
-PlaygroundSupport.PlaygroundPage.current.liveView = sceneView
-
