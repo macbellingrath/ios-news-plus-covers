@@ -14,21 +14,18 @@ import AppKit
 import Foundation
 
 #if TARGET_OS_IPHONE
-typealias Image = UIImage
+public typealias Image = UIImage
 #else
-typealias Image = NSImage
+public typealias Image = NSImage
 #endif
 
-class ImageService: NSObject {
-    private let queue = DispatchQueue(label: "com.brights.imageservice")
-    func getImage(url: URL, completion: @escaping (Result<Image, Error>) -> Void) {
+public class ImageService: NSObject {
+    public func getImage(url: URL, completion: @escaping (Result<Image, Error>) -> Void) {
         URLSession.shared.dataTask(with: url, completionHandler: { (data, resp, error) in
             if let error = error {
                 completion(.failure(error))
             } else if let data = data, let image = Image(data: data) {
                 completion(.success(image))
-            } else {
-                fatalError()
             }
         }).resume()
     }

@@ -32,8 +32,6 @@
 		E6D69F9E2250E7D500BFB157 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6D69FA02250E7D500BFB157 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6EF2C1922514BFE0059DA76 /* BrightsSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrightsSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6EF2C1B22514BFE0059DA76 /* BrightsSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrightsSaverView.h; sourceTree = "<group>"; };
-		E6EF2C1D22514BFE0059DA76 /* BrightsSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrightsSaverView.m; sourceTree = "<group>"; };
 		E6EF2C1F22514BFE0059DA76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6EF2C24225252B50059DA76 /* BrightSaverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightSaverView.swift; sourceTree = "<group>"; };
 		E6EF2C2622525B7E0059DA76 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
@@ -94,8 +92,6 @@
 		E6EF2C1A22514BFE0059DA76 /* BrightsSaver */ = {
 			isa = PBXGroup;
 			children = (
-				E6EF2C1B22514BFE0059DA76 /* BrightsSaverView.h */,
-				E6EF2C1D22514BFE0059DA76 /* BrightsSaverView.m */,
 				E6EF2C1F22514BFE0059DA76 /* Info.plist */,
 				E6EF2C24225252B50059DA76 /* BrightSaverView.swift */,
 				E6EF2C2622525B7E0059DA76 /* ImageService.swift */,

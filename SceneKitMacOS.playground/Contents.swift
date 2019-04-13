@@ -40,7 +40,7 @@ struct Brights: Codable {
 }
 
 class BrightService {
-    let brightsURL = URL(string: "https://api.washingtonpost.com/rainbow-tv/brights/?width=200")!
+    let brightsURL = URL(string: "https://api.washingtonpost.com/rainbow-tv/brights")!
 
     func getBrights(completion: @escaping (Brights) -> Void) {
         URLSession.shared.dataTask(with: brightsURL) { (data, resp, error) in
@@ -62,12 +62,12 @@ class Scene: SCNScene {
         let cameraNode = SCNNode()
         let camera = SCNCamera()
         cameraNode.camera = camera
-        cameraNode.position = SCNVector3(x: 6.2,
-                                         y: 7.856,
-                                         z: 9.964)
-        cameraNode.eulerAngles = SCNVector3(x: -1.2,
-                                            y: 0.8,
-                                            z: -0.072)
+        cameraNode.position.y = 5
+        cameraNode.position.x = -5
+        cameraNode.eulerAngles = SCNVector3(x: -(CGFloat.pi/2) + 0.35,
+                                            y: 0.1,
+                                            z: 0)
+
         rootNode.addChildNode(cameraNode)
         self.cameraNode = cameraNode
 
@@ -75,17 +75,18 @@ class Scene: SCNScene {
         light.type = .directional
         light.castsShadow = true
         // A larger shadow map image produces more detailed shadows at a higher cost to rendering performance; a smaller shadow map renders more quickly but results in pixelation at the edges of shadows.
-        light.shadowMapSize = .zero // CGSize(width: 2000, height: 2000)
+        light.shadowMapSize = .zero // CGSize(width: 10, height: 10)
         // bigger is softer
-        light.orthographicScale = 100
+        light.orthographicScale = 10
         // Lower numbers result in shadows with sharply defined, pixelated edges; higher numbers result in blurry shadows.
         light.shadowRadius = 10
         // Higher numbers result in smoother edges; lower numbers increase rendering performance.
-        light.shadowSampleCount = 10
+        // default is 1 on iOS and 16 on macOS
+        light.shadowSampleCount = 25
 
         let lightNode = SCNNode()
-        lightNode.position = SCNVector3(x: 0, y: 2, z: 0)
-        lightNode.eulerAngles = SCNVector3(x: 0, y: (CGFloat.pi/2), z: 0)
+        lightNode.position = SCNVector3(x: 0, y: 10, z: 0)
+        lightNode.eulerAngles = SCNVector3(x: 0, y: CGFloat.pi/2, z: 0)
         lightNode.light = light
         rootNode.addChildNode(lightNode)
 
@@ -128,6 +129,8 @@ class Scene: SCNScene {
             let length = CGFloat(1)
             let chamferRadius = CGFloat(0.3)
 
+            let group = DispatchGroup()
+
             for row in matrix {
                 for column in row {
                     let newBoxGeometry = SCNBox(
@@ -141,11 +144,11 @@ class Scene: SCNScene {
                     newBoxNode.castsShadow = true
                     newBoxNode.position = position
                     position.x += newBoxGeometry.width + margin
-
+                    group.enter()
                     self.imageService.getImage(url: column.image, completion: { result in
                         newBoxGeometry.firstMaterial?.diffuse.contents = try? result.get()
                         self.rootNode.addChildNode(newBoxNode)
-                        
+                        group.leave()
                     })
                 }
 
@@ -153,8 +156,7 @@ class Scene: SCNScene {
                 position.x = 0
                 position.z += length + margin
             }
-
-            completion()
+            group.notify(queue: .main, execute: completion)
         }
     }
 
@@ -170,12 +172,24 @@ class View: SCNView, SCNSceneRendererDelegate {
         loops = true
 
         scene.render {
-            let duration: TimeInterval = 2
-            let moveDownAction = SCNAction.move(by: SCNVector3(x: 0, y: -5, z: -5), duration: duration)
-            let rotateAction = SCNAction.rotateBy(x: -0.3, y: -0.2, z: 0, duration: duration)
-            let pan = SCNAction.move(by:  SCNVector3(x: 0, y: 0, z: 5), duration: duration)
-            let sequenceAction = SCNAction.sequence([moveDownAction, rotateAction, pan])
-            scene.cameraNode?.runAction(sequenceAction)
+            let duration: TimeInterval = 10
+            var actions: [SCNAction] = []
+
+            for node in scene.rootNode.childNodes {
+                if let box = node.geometry as? SCNBox {
+                    var nodePos = node.position
+                    nodePos.y = 3
+                    nodePos.z += box.length / 2
+                    nodePos.x += box.width / 2
+
+                    let action = SCNAction.move(to:nodePos, duration: duration)
+                    actions.append(action)
+                }
+            }
+            actions.shuffle()
+            let sequenceAction = SCNAction.sequence(actions)
+            let repeatedSequence = SCNAction.repeatForever(sequenceAction)
+            scene.cameraNode?.runAction(repeatedSequence)
         }
     }
 
