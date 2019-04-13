@@ -6,14 +6,14 @@
 //  Copyright © 2019 Mac Bellingrath. All rights reserved.
 //
 
-#if TARGET_OS_IPHONE
+#if os(iOS) || os(tvOS)
 import UIKit
 #else
 import AppKit
 #endif
 import Foundation
 
-#if TARGET_OS_IPHONE
+#if os(iOS) || os(tvOS)
 public typealias Image = UIImage
 #else
 public typealias Image = NSImage

@@ -83,10 +83,14 @@ class Scene: SCNScene {
         // Higher numbers result in smoother edges; lower numbers increase rendering performance.
         // default is 1 on iOS and 16 on macOS
         light.shadowSampleCount = 25
+        light.shadowBias = 5
+        light.zNear = 1
+        light.zFar = 1
 
         let lightNode = SCNNode()
         lightNode.position = SCNVector3(x: 0, y: 10, z: 0)
-        lightNode.eulerAngles = SCNVector3(x: 0, y: CGFloat.pi/2, z: 0)
+
+        lightNode.eulerAngles = SCNVector3(x: 0, y: (.pi/2) - 0.02, z: 0)
         lightNode.light = light
         rootNode.addChildNode(lightNode)
 

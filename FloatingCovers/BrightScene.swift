@@ -33,6 +33,7 @@ class BrightService {
             }.resume()
     }
 }
+
 class Scene: SCNScene {
     var imageService = ImageService()
     var service = BrightService()
@@ -43,10 +44,9 @@ class Scene: SCNScene {
         let camera = SCNCamera()
         cameraNode.camera = camera
         cameraNode.position.y = 20
-        cameraNode.eulerAngles = SCNVector3(x: -(CGFloat.pi/2),
+        cameraNode.eulerAngles = SCNVector3(x: -(.pi/2),
                                             y: 0.5,
                                             z: 0)
-
         rootNode.addChildNode(cameraNode)
         self.cameraNode = cameraNode
 
@@ -62,17 +62,25 @@ class Scene: SCNScene {
         // Higher numbers result in smoother edges; lower numbers increase rendering performance.
         // default is 1 on iOS and 16 on macOS
         light.shadowSampleCount = 25
+        light.shadowBias = 5
+        light.zNear = 1
+        light.zFar = 1
 
         let lightNode = SCNNode()
         lightNode.position = SCNVector3(x: 0, y: 10, z: 0)
-        lightNode.eulerAngles = SCNVector3(x: 0, y: CGFloat.pi/2, z: 0)
+        
+        lightNode.eulerAngles = SCNVector3(x: 0, y: (.pi/2) - 0.02, z: 0)
         lightNode.light = light
         rootNode.addChildNode(lightNode)
 
 
         let floor = SCNFloor()
         floor.reflectivity = 0
+        #if os(macOS)
         floor.firstMaterial?.diffuse.contents = NSColor.white
+        #else
+        floor.firstMaterial?.diffuse.contents = UIColor.white
+        #endif
         floor.firstMaterial?.isDoubleSided = false
         let floorNode = SCNNode(geometry: floor)
         rootNode.addChildNode(floorNode)
@@ -122,7 +130,11 @@ class Scene: SCNScene {
                     let newBoxNode = SCNNode(geometry: newBoxGeometry)
                     newBoxNode.castsShadow = true
                     newBoxNode.position = position
+                    #if os(macOS)
                     position.x += newBoxGeometry.width + margin
+                    #else
+                    position.x += Float(newBoxGeometry.width + margin)
+                    #endif
                     group.enter()
                     self.imageService.getImage(url: column.image, completion: { result in
                         newBoxGeometry.firstMaterial?.diffuse.contents = try? result.get()
@@ -133,7 +145,11 @@ class Scene: SCNScene {
 
 
                 position.x = 0
+                #if os(macOS)
                 position.z += length + margin
+                #else
+                position.z += Float(length + margin)
+                #endif
             }
             group.notify(queue: .main, execute: completion)
         }
@@ -158,9 +174,14 @@ class View: SCNView, SCNSceneRendererDelegate {
                 if let box = node.geometry as? SCNBox {
                     var nodePos = node.position
                     nodePos.y = 3
+
+                    #if os(macOS)
                     nodePos.z += box.length / 2
                     nodePos.x += box.width / 2
-
+                    #else
+                    nodePos.z += Float(box.length / 2)
+                    nodePos.x += Float(box.width / 2)
+                    #endif
                     let action = SCNAction.move(to:nodePos, duration: duration)
                     actions.append(action)
                 }
