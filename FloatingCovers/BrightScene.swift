@@ -30,7 +30,7 @@ class BrightService {
                     Brights.self, from: data) {
                 completion(brights)
             }
-            }.resume()
+        }.resume()
     }
 }
 
@@ -68,7 +68,7 @@ class Scene: SCNScene {
 
         let lightNode = SCNNode()
         lightNode.position = SCNVector3(x: 0, y: 10, z: 0)
-        
+
         lightNode.eulerAngles = SCNVector3(x: 0, y: (.pi/2) - 0.02, z: 0)
         lightNode.light = light
         rootNode.addChildNode(lightNode)
@@ -112,7 +112,7 @@ class Scene: SCNScene {
             position.y = 0.2
             let margin = CGFloat(1)
             let width = CGFloat(1)
-            let height = CGFloat(0.15)
+            let height = CGFloat(0.05)
             let length = CGFloat(1)
             let chamferRadius = CGFloat(0.3)
 
@@ -137,7 +137,20 @@ class Scene: SCNScene {
                     #endif
                     group.enter()
                     self.imageService.getImage(url: column.image, completion: { result in
-                        newBoxGeometry.firstMaterial?.diffuse.contents = try? result.get()
+                        let imageMaterial = SCNMaterial()
+                        imageMaterial.diffuse.contents = try? result.get()
+                        var materials: [SCNMaterial] = []
+                        for _ in 0..<5 {
+                            let side = SCNMaterial()
+                            #if os(macOS)
+                            side.diffuse.contents = NSColor.white
+                            #else
+                            side.diffuse.contents = UIColor.white
+                            #endif
+                            materials.append(side)
+                        }
+                        materials.insert(imageMaterial, at: 4)
+                        newBoxGeometry.materials = materials
                         self.rootNode.addChildNode(newBoxNode)
                         group.leave()
                     })

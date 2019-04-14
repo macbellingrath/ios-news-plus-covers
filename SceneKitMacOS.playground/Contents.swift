@@ -201,7 +201,7 @@ class View: SCNView, SCNSceneRendererDelegate {
     }
 }
 
-let sceneView = View(frame: CGRect(x:0 , y:0, width: 1000, height: 1000))
+let sceneView = View(frame: CGRect(x:0 , y:0, width: 200, height: 200))
 sceneView.loadScene()
 sceneView.allowsCameraControl = true
 sceneView.delegate = sceneView

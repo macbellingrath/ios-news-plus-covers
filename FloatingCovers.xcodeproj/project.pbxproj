@@ -14,6 +14,13 @@
 		E62E045D2262726A00017EC9 /* BrightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67C886B226203E800DFB5D1 /* BrightScene.swift */; };
 		E62E045E2262727000017EC9 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF2C2622525B7E0059DA76 /* ImageService.swift */; };
 		E62E045F2262727200017EC9 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF2C2622525B7E0059DA76 /* ImageService.swift */; };
+		E6707541226345E000749CBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6707540226345E000749CBA /* AppDelegate.swift */; };
+		E6707543226345E000749CBA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6707542226345E000749CBA /* GameViewController.swift */; };
+		E6707547226345E000749CBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6707546226345E000749CBA /* Assets.xcassets */; };
+		E670754A226345E000749CBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6707548226345E000749CBA /* Main.storyboard */; };
+		E67075502263461800749CBA /* BrightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67C886B226203E800DFB5D1 /* BrightScene.swift */; };
+		E67075512263461800749CBA /* BrightSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF2C24225252B50059DA76 /* BrightSaverView.swift */; };
+		E67075522263461800749CBA /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF2C2622525B7E0059DA76 /* ImageService.swift */; };
 		E67C886C226203E800DFB5D1 /* BrightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67C886B226203E800DFB5D1 /* BrightScene.swift */; };
 		E67C886D2262041600DFB5D1 /* BrightScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67C886B226203E800DFB5D1 /* BrightScene.swift */; };
 		E6D69F932250E7D300BFB157 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D69F922250E7D300BFB157 /* AppDelegate.swift */; };
@@ -35,6 +42,13 @@
 		E62E04572262719300017EC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E62E04592262719300017EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E65A00E6225F483A00ED5FE7 /* SceneKitMacOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SceneKitMacOS.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		E670753E226345E000749CBA /* BrightsMacApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrightsMacApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6707540226345E000749CBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E6707542226345E000749CBA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		E6707546226345E000749CBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E6707549226345E000749CBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E670754B226345E000749CBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E670754C226345E000749CBA /* BrightsMacApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BrightsMacApp.entitlements; sourceTree = "<group>"; };
 		E67C886B226203E800DFB5D1 /* BrightScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightScene.swift; sourceTree = "<group>"; };
 		E6D69F8F2250E7D300BFB157 /* FloatingCovers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FloatingCovers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6D69F922250E7D300BFB157 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +66,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		E62E044B2262719200017EC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E670753B226345E000749CBA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -87,12 +108,26 @@
 			path = BrightsTV;
 			sourceTree = "<group>";
 		};
+		E670753F226345E000749CBA /* BrightsMacApp */ = {
+			isa = PBXGroup;
+			children = (
+				E6707540226345E000749CBA /* AppDelegate.swift */,
+				E6707542226345E000749CBA /* GameViewController.swift */,
+				E6707546226345E000749CBA /* Assets.xcassets */,
+				E6707548226345E000749CBA /* Main.storyboard */,
+				E670754B226345E000749CBA /* Info.plist */,
+				E670754C226345E000749CBA /* BrightsMacApp.entitlements */,
+			);
+			path = BrightsMacApp;
+			sourceTree = "<group>";
+		};
 		E6D69F862250E7D300BFB157 = {
 			isa = PBXGroup;
 			children = (
 				E6D69F912250E7D300BFB157 /* FloatingCovers */,
 				E6EF2C1A22514BFE0059DA76 /* BrightsSaver */,
 				E62E044F2262719200017EC9 /* BrightsTV */,
+				E670753F226345E000749CBA /* BrightsMacApp */,
 				E6D69F902250E7D300BFB157 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +138,7 @@
 				E6D69F8F2250E7D300BFB157 /* FloatingCovers.app */,
 				E6EF2C1922514BFE0059DA76 /* BrightsSaver.saver */,
 				E62E044E2262719200017EC9 /* BrightsTV.app */,
+				E670753E226345E000749CBA /* BrightsMacApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +199,23 @@
 			productReference = E62E044E2262719200017EC9 /* BrightsTV.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E670753D226345E000749CBA /* BrightsMacApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E670754F226345E000749CBA /* Build configuration list for PBXNativeTarget "BrightsMacApp" */;
+			buildPhases = (
+				E670753A226345E000749CBA /* Sources */,
+				E670753B226345E000749CBA /* Frameworks */,
+				E670753C226345E000749CBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrightsMacApp;
+			productName = BrightsMacApp;
+			productReference = E670753E226345E000749CBA /* BrightsMacApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E6D69F8E2250E7D300BFB157 /* FloatingCovers */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6D69FA32250E7D500BFB157 /* Build configuration list for PBXNativeTarget "FloatingCovers" */;
@@ -211,6 +264,9 @@
 					E62E044D2262719200017EC9 = {
 						CreatedOnToolsVersion = 10.2;
 					};
+					E670753D226345E000749CBA = {
+						CreatedOnToolsVersion = 10.2;
+					};
 					E6D69F8E2250E7D300BFB157 = {
 						CreatedOnToolsVersion = 10.2;
 					};
@@ -236,6 +292,7 @@
 				E6D69F8E2250E7D300BFB157 /* FloatingCovers */,
 				E6EF2C1822514BFE0059DA76 /* BrightsSaver */,
 				E62E044D2262719200017EC9 /* BrightsTV */,
+				E670753D226345E000749CBA /* BrightsMacApp */,
 			);
 		};
 /* End PBXProject section */
@@ -247,6 +304,15 @@
 			files = (
 				E62E04582262719300017EC9 /* Assets.xcassets in Resources */,
 				E62E04562262719200017EC9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E670753C226345E000749CBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E670754A226345E000749CBA /* Main.storyboard in Resources */,
+				E6707547226345E000749CBA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +349,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E670753A226345E000749CBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E67075512263461800749CBA /* BrightSaverView.swift in Sources */,
+				E6707543226345E000749CBA /* GameViewController.swift in Sources */,
+				E6707541226345E000749CBA /* AppDelegate.swift in Sources */,
+				E67075522263461800749CBA /* ImageService.swift in Sources */,
+				E67075502263461800749CBA /* BrightScene.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E6D69F8B2250E7D300BFB157 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -311,6 +389,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				E62E04552262719200017EC9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E6707548226345E000749CBA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E6707549226345E000749CBA /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -373,6 +459,46 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.2;
+			};
+			name = Release;
+		};
+		E670754D226345E000749CBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BrightsMacApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.BrightsMacApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E670754E226345E000749CBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BrightsMacApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.BrightsMacApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -585,6 +711,15 @@
 			buildConfigurations = (
 				E62E045A2262719300017EC9 /* Debug */,
 				E62E045B2262719300017EC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E670754F226345E000749CBA /* Build configuration list for PBXNativeTarget "BrightsMacApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E670754D226345E000749CBA /* Debug */,
+				E670754E226345E000749CBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
